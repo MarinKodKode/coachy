@@ -1,1 +1,1 @@
-# coachy
+# Coachy App
