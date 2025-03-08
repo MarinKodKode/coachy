@@ -9,26 +9,31 @@ import SwiftUI
 
 struct WorkoutMetric: View {
     
-//    var icon : UIImage
-//    var text : String
-//    var description : String
+    var icon : Image
+    var text : String
+    var description : String
     
     var body: some View {
         HStack {
-            Image(systemName: "flame")
-            Text("450")
-            Text("Kcal")
+            icon
+                .foregroundStyle(Color("lightBlue"))
+            Text(text)
+                .foregroundStyle(Color("lightBlue"))
+            Text(description)
+                .foregroundStyle(Color("lightBlue"))
         }
         .padding()
-        .background(Color.yellow)
+        .background(Color("darkGrey"))
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.blue, lineWidth: 4) // Border color
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 16)
+//                .stroke(Color.blue, lineWidth: 4) // Border color
+//        )
     }
 }
 
 #Preview {
-    WorkoutMetric()
+    WorkoutMetric(
+        icon: Image(systemName: "flame"), text: "Calories", description: "110"
+    )
 }

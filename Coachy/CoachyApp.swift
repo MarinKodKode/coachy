@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct CoachyApp: App {
+    struct CoachyApp: App {
     
     let router = Router.shared
     

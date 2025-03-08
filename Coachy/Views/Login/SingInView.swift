@@ -10,6 +10,7 @@ import SwiftUI
 struct SingInView: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
+    @State private var loadingSpinner: Bool = false
     @EnvironmentObject var router : Router
     
     var body: some View {
@@ -50,7 +51,12 @@ struct SingInView: View {
                         .padding()
                         
                         Button(action: {
-                            router.path.append(NavigationDestination.home)
+                            self.loadingSpinner = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                                self.loadingSpinner = false
+                                router.path.append(NavigationDestination.home)
+                                
+                            }
                         }, label: {
                             Text("Ingresar")
                                 .font(.system(size: 16))
@@ -111,8 +117,10 @@ struct SingInView: View {
             }
             
         }
+        .showSpinner(when: loadingSpinner)
         .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.all)
+        
         
     }
 }
